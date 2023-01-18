@@ -15,7 +15,7 @@ public class DemostdApplication {
 		// Get the bean by type
 		var bean = ctx.getBean(MyComponent.class);
 		System.out.println(bean);
-
+ 
 		// Get the bean by name
 		var fancyNameComponent = ctx.getBean("FancyNameComponent");
 		System.out.println(fancyNameComponent);
@@ -40,8 +40,18 @@ public class DemostdApplication {
 		assert prototypeScopeComponent != prototypeScopeComponent2;
 
 		// Show that the bean is autowired
-		var autowiredDependency = ctx.getBean("autowiredDependency", AutowiredDependency.class);
-		System.out.println(autowiredDependency);
+		var fieldAutowiredDI = ctx.getBean("fieldAutowiredDI", FieldAutowiredDI.class);
+		System.out.println(fieldAutowiredDI);
+
+		// Constructor injection
+		var constructorAutowiredDI = ctx.getBean("constructorAutowiredDI", ConstructorAutowiredDI.class);
+		System.out.println(constructorAutowiredDI);
+
+		// Qualifier injection
+		var qualifierAutowiredDI = ctx.getBean("qualifierAutowiredDI", QualifierAutowiredDI.class);
+		System.out.println(qualifierAutowiredDI);
+		
+
 
 
 	}

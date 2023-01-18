@@ -12,12 +12,13 @@ import org.springframework.stereotype.Component;
  * 
  */
 @Component
-public class AutowiredDependency {
+public class FieldAutowiredDI {
 
+    // field injection
     @Autowired
     private SingletonScopeComponent singletonScopeComponent;
 
-    public AutowiredDependency() {
+    public FieldAutowiredDI() {
         System.out.println("AutowiredDependency created");
     }
 
