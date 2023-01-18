@@ -47,12 +47,17 @@ public class DemostdApplication {
 		var constructorAutowiredDI = ctx.getBean("constructorAutowiredDI", ConstructorAutowiredDI.class);
 		System.out.println(constructorAutowiredDI);
 
-		// Qualifier injection
+		// Qualifier, Collection, Map injection
 		var qualifierAutowiredDI = ctx.getBean("qualifierAutowiredDI", QualifierAutowiredDI.class);
 		System.out.println(qualifierAutowiredDI);
 
-		// Collection autowiring
+		// Injecting a value from application.properties
+		var injectingValues = ctx.getBean("injectingValues", InjectingValues.class);
+		System.out.println(injectingValues);
+		
 
+		
+		
 		
 
 
