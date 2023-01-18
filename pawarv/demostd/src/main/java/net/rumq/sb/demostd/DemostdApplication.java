@@ -23,7 +23,25 @@ public class DemostdApplication {
 		// Show that the bean is a singleton
 		var singletonScopeComponent = ctx.getBean("singletonScopeComponent", SingletonScopeComponent.class);
 		System.out.println(singletonScopeComponent);
+		var singletonScopeComponent2 = ctx.getBean("singletonScopeComponent", SingletonScopeComponent.class);
+		System.out.println(singletonScopeComponent2);
+		assert singletonScopeComponent == singletonScopeComponent2;
 
+
+		// Show that the bean is lazy (Check when it's created. See what happens if you remove the @Lazy annotation)
+		var lazyComponent = ctx.getBean("lazyComponent", LazyComponent.class);
+		System.out.println(lazyComponent);
+
+		// Show that the bean is a prototype
+		var prototypeScopeComponent = ctx.getBean("prototypeScopeComponent", PrototypeScopeComponent.class);
+		System.out.println(prototypeScopeComponent);
+		var prototypeScopeComponent2 = ctx.getBean("prototypeScopeComponent", PrototypeScopeComponent.class);
+		System.out.println(prototypeScopeComponent2);
+		assert prototypeScopeComponent != prototypeScopeComponent2;
+
+		// Show that the bean is autowired
+		var autowiredDependency = ctx.getBean("autowiredDependency", AutowiredDependency.class);
+		System.out.println(autowiredDependency);
 
 
 	}
