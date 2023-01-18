@@ -50,6 +50,12 @@ public class DemostdApplication {
 		// Qualifier injection
 		var qualifierAutowiredDI = ctx.getBean("qualifierAutowiredDI", QualifierAutowiredDI.class);
 		System.out.println(qualifierAutowiredDI);
+
+		// Collection autowiring
+
+		
+
+
 		
 
 
