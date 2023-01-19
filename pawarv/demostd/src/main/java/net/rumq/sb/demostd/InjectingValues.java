@@ -3,6 +3,7 @@ package net.rumq.sb.demostd;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -45,6 +46,9 @@ public class InjectingValues {
 
     @Value("#{info.cities.![toUpperCase()]}") // upper case all cities
     private List<String> upperCities;
+
+    @Autowired
+    private Timestamp timestamp;
     
     @Override
     public String toString() {
@@ -60,6 +64,7 @@ public class InjectingValues {
                 "[firstACity=" + firstACity + "] \n" +
                 "[lastACity=" + lastACity + "] \n" +
                 "[upperCities=" + upperCities + "] \n" +
+                "[timestamp=" + timestamp.getTimestamp() + "] \n" +
                 "[value=" + value + "]";
     }
 

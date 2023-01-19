@@ -59,7 +59,18 @@ public class DemostdApplication {
 		var processArguments = ctx.getBean("processArguments", ProcessArguments.class);
 		System.out.println(processArguments);
 
-		
+
+		// Beans created in Configuration class 
+		MyBean bean2 = ctx.getBean("myBean", MyBean.class);
+		System.out.println(bean2);
+
+		// Beans created in Configuration class
+		Person person = ctx.getBean("person", Person.class);	
+		System.out.println(person);
+
+		// Beans created in Configuration class
+		Person jane = ctx.getBean("jane", Person.class);
+		System.out.println(jane);
 
 		
 		
