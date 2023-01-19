@@ -72,6 +72,10 @@ public class DemostdApplication {
 		Person jane = ctx.getBean("jane", Person.class);
 		System.out.println(jane);
 
+		// Autowire a bean created in Configuration class
+		AutowiredBean autowiredBean = ctx.getBean( AutowiredBean.class);
+		System.out.println(autowiredBean);
+
 		
 		
 		

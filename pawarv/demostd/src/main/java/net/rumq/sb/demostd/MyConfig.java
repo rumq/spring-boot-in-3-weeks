@@ -2,6 +2,7 @@ package net.rumq.sb.demostd;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 /*
  * The @Configuration annotation tells Spring that this class is a configuration class
@@ -25,6 +26,7 @@ public class MyConfig {
     }
 
     @Bean(name = "jane")
+    @Primary
     public Person person2() {
         return new Person("Jane", 32);
     }
