@@ -34,6 +34,18 @@ public class InjectingValues {
     @Value("#{info.currencies['GBP']}") // accessing a map using SpEL
     private String currency;
 
+    @Value("#{info.cities.?[startsWith('A')]}") // accessing a list using SpEL
+    private List<String> allACities;
+
+    @Value("#{info.cities.^[startsWith('A')]}") // first A city
+    private String firstACity;
+
+    @Value("#{info.cities.$[startsWith('A')]}") // last A city
+    private String lastACity;
+
+    @Value("#{info.cities.![toUpperCase()]}") // upper case all cities
+    private List<String> upperCities;
+    
     @Override
     public String toString() {
         return "InjectingValues \n" +
@@ -44,6 +56,10 @@ public class InjectingValues {
                 "[date=" + date + "] \n" +
                 "[city=" + city + "] \n" +
                 "[currency=" + currency + "] \n" +
+                "[allACities=" + allACities + "] \n" +
+                "[firstACity=" + firstACity + "] \n" +
+                "[lastACity=" + lastACity + "] \n" +
+                "[upperCities=" + upperCities + "] \n" +
                 "[value=" + value + "]";
     }
 

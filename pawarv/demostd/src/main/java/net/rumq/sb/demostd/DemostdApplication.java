@@ -54,6 +54,11 @@ public class DemostdApplication {
 		// Injecting a value from application.properties
 		var injectingValues = ctx.getBean("injectingValues", InjectingValues.class);
 		System.out.println(injectingValues);
+
+		// Process arguments
+		var processArguments = ctx.getBean("processArguments", ProcessArguments.class);
+		System.out.println(processArguments);
+
 		
 
 		
