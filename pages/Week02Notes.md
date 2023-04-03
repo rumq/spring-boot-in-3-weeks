@@ -103,6 +103,7 @@ Also need to specify the following in the pom.xml
     <optional>true</optional>
 </dependency>
 
+
 ```
 
 Project Lombok is used to generate the getters and setters. It is a Java library that automatically plugs into your editor and build tools, spicing up your java.
@@ -151,37 +152,101 @@ Repository - CRUD with minimal code.
 H2 is in memory database, runs inside JVM.
 Dependency for H2 database. It provides the driver.
 
+See [pom](../demos/demo-08-integrating-data-sources/pom.xml)
+
 ```xml
 <dependency>
     <groupId>com.h2database</groupId>
     <artifactId>h2</artifactId>
     <scope>runtime</scope>
 </dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency> pom.xml
+
 ```
 
 Review on mvnrepository.com, copy mysql dependency if we want it.
 
+You can use JPQL (Java Persistence Query Language) to query the database. We may have to set the dialect in `pom.xml` so it's translated to the correct SQL.
+
+Entity class [Employee](#08-integrating-with-data-sources/)
+
 ### 2. Getting started with Spring Data JPA
 
-3. Defining JPA Entity classes
-4. Viewing Database Data
+### Defining JPA Entity classes
+
+### Viewing Database Data
 
 ## 09 Querying and Modifying Entities
 
-1. Querying for Entities
+### 1. Querying for Entities
+
+`@PersistenceContext` is used to inject the EntityManager into the class. It basically asks EntityManagerFactory to create an EntityManager.
+
 2. Modifying Entities
 3.
 
 ## 10 Spring Data Repositories
 
-1. Understanding Spring Data Repositories
-2. Using Spring Data Repositories
-3.
+### 1. Understanding Spring Data Repositories
+
+### 2. Using Spring Data Repositories
 
 ## 11 Simple Rest Services
 
-1. Getting started
-2. Defining a simple REST service
+### 1. Getting started
+
+REST Controller is a Facade pattern. It is a class that provides a simplified interface to a complex system.
+
+```mermaid
+flowchart LR
+    subgraph "REST"
+        direction LR
+        subgraph "Server - SpringBoot App"
+
+            M1 --> S[SB Application RestController]
+            M2 --> S
+            M3 --> S
+            S --> Service
+            Service --> SpringData
+        end
+        subgraph "Database"
+            SpringData --> DB
+        end
+        subgraph "Client - Browser"
+            direction LR
+            C[Client] --> |GET| M1[GET]
+            C[Client] --> |PUT| M2[PUT]
+            C[Client] --> |POST| M3[POST]
+        end
+
+
+    end
+```
+
+```mermaid
+flowchart 
+    subgraph "Method Dispatching"            
+
+        subgraph "Controller"
+            CR
+        end
+        subgraph "Dispatcher"            
+            D[Dispatcher] --> CR[Controller]
+            CR --> D
+        end
+        subgraph "Client"
+            C[Client] --> D
+            D --> C
+        end                
+    end
+
+```
+
+### 2. Defining a simple REST service
+
 3.
 
 12 Full REST service

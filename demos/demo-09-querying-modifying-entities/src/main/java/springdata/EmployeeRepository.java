@@ -41,11 +41,12 @@ public class EmployeeRepository {
 	public void employeePayRise(long id, double payRise) {
 		Employee emp = entityManager.find(Employee.class, id);
 		emp.setDosh((emp.getDosh() + payRise));
+		// entityManager.flush();
 	}
 
 	@Transactional
 	public void deleteEmployee(long id) {
 		Employee emp = entityManager.find(Employee.class, id);
-		entityManager.remove(emp);
+		entityManager.remove(emp); // marks the entity for removal
 	}
 }
