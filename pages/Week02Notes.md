@@ -111,14 +111,9 @@ Project Lombok is used to generate the getters and setters. It is a Java library
 @Data
 ```
 
-
 ## 08 Integrating with Data Sources
 
 Starts at Week 2, 76:19 minutes
-
-# [Allpages](pages/AllPages.md)
-
-
 
 ### 1. Understanding Spring Data
 
@@ -126,12 +121,34 @@ JPA Java Persistence API, standardization of Hibernate. Implements Object Relati
 
 Support of Relational DBs, NoSQL DBs, Graph DBs, Map-Reduce DBs, Cloud Datastores.
 
+JPA is a specification over JDBC.
+
+```mermaid
+flowchart LR
+    subgraph "Node"
+        subgraph "JVM"
+            subgraph "SpringBoot App"
+                JPA[JPA ORM] --> JDBC[Oracle JDBC Driver]
+
+                JPA --> JDBC2[H2 JDBC Driver]
+            end
+            subgraph "H2 Database"
+                JDBC2 --> H2
+            end
+
+        end
+    end
+    subgraph "DB"
+        JDBC --> Oracle
+    end
+
+```
+
 Use Spring attributes to set transaction.
 
 Repository - CRUD with minimal code.
 
 H2 is in memory database, runs inside JVM.
-
 Dependency for H2 database. It provides the driver.
 
 ```xml
@@ -139,14 +156,13 @@ Dependency for H2 database. It provides the driver.
     <groupId>com.h2database</groupId>
     <artifactId>h2</artifactId>
     <scope>runtime</scope>
-</dependency> 
+</dependency>
 ```
 
 Review on mvnrepository.com, copy mysql dependency if we want it.
 
-
-
 ### 2. Getting started with Spring Data JPA
+
 3. Defining JPA Entity classes
 4. Viewing Database Data
 
@@ -172,9 +188,6 @@ Review on mvnrepository.com, copy mysql dependency if we want it.
 
 1. Setting the scene
 2. Defining a full REST service
-
-
-
 
 > [Home](HOME.md)
 
