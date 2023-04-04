@@ -208,36 +208,29 @@ flowchart LR
     subgraph "REST"
         direction LR
         subgraph "Server - SpringBoot App"
-
             subgraph "Controller Layer"
-                
-                M1 --> RC[Controller]
-                M2 --> RC
-                M3 --> RC
+                GET --> RC[Controller]
+                PUT --> RC
+                POST --> RC
             end
 
             subgraph "Service Layer"
-
-            Service
-            RC --> Service
-  
+                Service
+               RC --> Service
             end
 
-
-            subgraph "Repositor Layer"
-
+            subgraph "Repository Layer"
                 Service --> R[Repository]
             end
-
         end
         subgraph "Database"
             R --> DB
         end
         subgraph "Client - Browser"
             direction LR
-            C[Client] --> |GET| M1[GET]
-            C[Client] --> |PUT| M2[PUT]
-            C[Client] --> |POST| M3[POST]
+            C[Client] --> |GET| GET[GET]
+            C[Client] --> |PUT| PUT[PUT]
+            C[Client] --> |POST| POST[POST]
         end
     end
 ```
@@ -292,34 +285,66 @@ flowchart
 
 ### 2. Defining a simple REST service
 
-3.
-
-12 Full REST service
-
-1. Setting the scene
-2. Defining a full REST service
 
 ## 12 Full REST service
+
+### 1. Setting the scene
+### 2. Defining a full REST service
+
+
 
 Swagger is a tool that helps us document our REST API. It is a specification and a set of tools to help us design, build, document and consume RESTful APIs. It is equivalent to WSDL for SOAP web services.
 
 Cross origin resource sharing (CORS) is a mechanism that allows restricted resources on a web page to be requested from another domain outside the domain from which the first resource was served.
 
+The below diagram shows the flow, when CORS is off. The client browser is not allowed to make a request to the server in domain2.
+
 ```mermaid
 
 flowchart LR
-    subgraph "Client - Browser"
-        Client --> |Request1| Server1
-    end
-    subgraph "Server - domain1"
-        Server1 --> |Response1 |Client
-    end
-    subgraph "Server - domain2"
-    end
+    subgraph "CORS off"
+        direction LR
+        subgraph CB[Client Browser]
+            Client
+        end
+        subgraph S1[Server - domain1]
+            Server1
+        end    
+        subgraph S2[Server - domain2]
+            Server2
+        end
+    end    
+    Client --> |Request1| Server1        
+    Server1 --> |Response1 - link to domain2| Client
+    Client --x |Request2 - not allowed| Server2
+
 ```
+
+The below diagram shows the flow, when CORS is on. The client browser is allowed to make a request to the server in domain2.
+
+```mermaid
+
+flowchart LR
+    subgraph "CORS on"
+        direction LR
+        subgraph CB[Client Browser]
+            Client
+        end
+        subgraph S1[Server - domain1]
+            Server1
+        end    
+        subgraph S2[Server - domain2]
+            Server2
+        end
+    end    
+    Client --> |Request1| Server1        
+    Server1 --> |Response1 - link to domain2| Client
+    Client --> |Request2 -  allowed| Server2
+    Server2 --> |Response2| Client
+
+```
+
+
+
 
 > [Home](HOME.md)
-
-```
-
-```
