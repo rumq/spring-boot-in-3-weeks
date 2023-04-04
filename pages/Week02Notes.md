@@ -200,6 +200,9 @@ Entity class [Employee](#08-integrating-with-data-sources/)
 
 REST Controller is a Facade pattern. It is a class that provides a simplified interface to a complex system.
 
+Below diagram shows the layers of the REST application. The request comes in from the client, and is handled by the controller. The controller then calls the service layer, which calls the repository layer. The repository layer then calls the database. The response is then sent back to the client.
+
+
 ```mermaid
 flowchart LR
     subgraph "REST"
@@ -207,23 +210,28 @@ flowchart LR
         subgraph "Server - SpringBoot App"
 
             subgraph "Controller Layer"
-                M1 --> RC[SB Application RestController]
+                
+                M1 --> RC[Controller]
                 M2 --> RC
                 M3 --> RC
             end
 
             subgraph "Service Layer"
-                RC --> Service
+
+            Service
+            RC --> Service
+  
             end
 
 
             subgraph "Repositor Layer"
+
                 Service --> R[Repository]
             end
 
         end
         subgraph "Database"
-            R --> DB            
+            R --> DB
         end
         subgraph "Client - Browser"
             direction LR
@@ -231,26 +239,53 @@ flowchart LR
             C[Client] --> |PUT| M2[PUT]
             C[Client] --> |POST| M3[POST]
         end
-
-
     end
 ```
 
+The below diagram shows the pointers in each sublayer to the next layer. All these pointers are autowired by Spring.
+
+```mermaid
+flowchart LR
+    subgraph "REST MVC"
+        
+        subgraph SB[Server - SpringBoot App]
+            subgraph CL[Controller Layer]
+                Controller
+            end
+            subgraph SL[Service Layer]
+                Service
+                Service -.-o |Pointer| Controller
+            end
+            subgraph RL[Repositor Layer]
+                Repository
+                Repository -.-o |Pointer | Service
+            end
+            CL --> SL --> RL
+        end
+    end
+```
+
+The below diagram shows how the dispatcher transforms the POJO into JSON/XML.
 ```mermaid
 flowchart
     subgraph "Method Dispatching"
-
-        subgraph "Controller"
-            CR
-        end
-        subgraph "Dispatcher"
-            D[Dispatcher] --> CR[Controller]
-            CR --> |POJO| D
+        Client  
+        Dispatcher 
+        Controller
+        subgraph "Server"
+            subgraph "Controller"
+                CR
+            end
+            subgraph "Dispatcher"
+                D[Dispatcher] --> |Request| CR[Controller]
+                CR --> |Response -POJO| D
+            end
         end
         subgraph "Client"
-            C[Client] --> D
-            D --> |JSON| C
+            C[Client] --> |Request|D
+            D --> |Response - JSON/XML| C
         end
+
     end
 
 ```
@@ -267,6 +302,21 @@ flowchart
 ## 12 Full REST service
 
 Swagger is a tool that helps us document our REST API. It is a specification and a set of tools to help us design, build, document and consume RESTful APIs. It is equivalent to WSDL for SOAP web services.
+
+Cross origin resource sharing (CORS) is a mechanism that allows restricted resources on a web page to be requested from another domain outside the domain from which the first resource was served.
+
+```mermaid
+
+flowchart LR
+    subgraph "Client - Browser"
+        Client --> |Request1| Server1
+    end
+    subgraph "Server - domain1"
+        Server1 --> |Response1 |Client
+    end
+    subgraph "Server - domain2"
+    end
+```
 
 > [Home](HOME.md)
 
