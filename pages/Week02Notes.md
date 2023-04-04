@@ -206,14 +206,24 @@ flowchart LR
         direction LR
         subgraph "Server - SpringBoot App"
 
-            M1 --> S[SB Application RestController]
-            M2 --> S
-            M3 --> S
-            S --> Service
-            Service --> SpringData
+            subgraph "Controller Layer"
+                M1 --> RC[SB Application RestController]
+                M2 --> RC
+                M3 --> RC
+            end
+
+            subgraph "Service Layer"
+                RC --> Service
+            end
+
+
+            subgraph "Repositor Layer"
+                Service --> R[Repository]
+            end
+
         end
         subgraph "Database"
-            SpringData --> DB
+            R --> DB            
         end
         subgraph "Client - Browser"
             direction LR
@@ -227,20 +237,20 @@ flowchart LR
 ```
 
 ```mermaid
-flowchart 
-    subgraph "Method Dispatching"            
+flowchart
+    subgraph "Method Dispatching"
 
         subgraph "Controller"
             CR
         end
-        subgraph "Dispatcher"            
+        subgraph "Dispatcher"
             D[Dispatcher] --> CR[Controller]
-            CR --> D
+            CR --> |POJO| D
         end
         subgraph "Client"
             C[Client] --> D
-            D --> C
-        end                
+            D --> |JSON| C
+        end
     end
 
 ```
@@ -253,6 +263,10 @@ flowchart
 
 1. Setting the scene
 2. Defining a full REST service
+
+## 12 Full REST service
+
+Swagger is a tool that helps us document our REST API. It is a specification and a set of tools to help us design, build, document and consume RESTful APIs. It is equivalent to WSDL for SOAP web services.
 
 > [Home](HOME.md)
 
