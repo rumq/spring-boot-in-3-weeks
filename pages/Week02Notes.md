@@ -202,7 +202,6 @@ REST Controller is a Facade pattern. It is a class that provides a simplified in
 
 Below diagram shows the layers of the REST application. The request comes in from the client, and is handled by the controller. The controller then calls the service layer, which calls the repository layer. The repository layer then calls the database. The response is then sent back to the client.
 
-
 ```mermaid
 flowchart LR
     subgraph "REST"
@@ -240,7 +239,7 @@ The below diagram shows the pointers in each sublayer to the next layer. All the
 ```mermaid
 flowchart LR
     subgraph "REST MVC"
-        
+
         subgraph SB[Server - SpringBoot App]
             subgraph CL[Controller Layer]
                 Controller
@@ -259,11 +258,12 @@ flowchart LR
 ```
 
 The below diagram shows how the dispatcher transforms the POJO into JSON/XML.
+
 ```mermaid
 flowchart
     subgraph "Method Dispatching"
-        Client  
-        Dispatcher 
+        Client
+        Dispatcher
         Controller
         subgraph "Server"
             subgraph "Controller"
@@ -285,13 +285,11 @@ flowchart
 
 ### 2. Defining a simple REST service
 
-
 ## 12 Full REST service
 
 ### 1. Setting the scene
+
 ### 2. Defining a full REST service
-
-
 
 Swagger is a tool that helps us document our REST API. It is a specification and a set of tools to help us design, build, document and consume RESTful APIs. It is equivalent to WSDL for SOAP web services.
 
@@ -309,12 +307,12 @@ flowchart LR
         end
         subgraph S1[Server - domain1]
             Server1
-        end    
+        end
         subgraph S2[Server - domain2]
             Server2
         end
-    end    
-    Client --> |Request1| Server1        
+    end
+    Client --> |Request1| Server1
     Server1 --> |Response1 - link to domain2| Client
     Client --x |Request2 - not allowed| Server2
 
@@ -332,19 +330,88 @@ flowchart LR
         end
         subgraph S1[Server - domain1]
             Server1
-        end    
+        end
         subgraph S2[Server - domain2]
             Server2
         end
-    end    
-    Client --> |Request1| Server1        
-    Server1 --> |Response1 - link to domain2| Client
+    end
+    Client --> |Request1| Server1
+    Server1 --> |Response1 - JavaScript with link to domain2| Client
     Client --> |Request2 -  allowed| Server2
     Server2 --> |Response2| Client
 
 ```
 
+## 14 Kakfa Messaging
 
+Below diagram shows the flow of messages between publishers and subscribers via Kafka Broker Cluster.
 
+```mermaid
+flowchart
+    subgraph "Kafka Messaging"
+        P1[Publisher]
+        P2[Publisher]
+        P3[Publisher]
+        S1[Subscriber]
+        S2[Subscriber]
+        S3[Subscriber]
+        S4[Subscriber]
 
+        P1 --> KBC
+        P2 --> KBC
+        P3 --> KBC
+
+        KBC --> S1
+        KBC --> S2
+        KBC --> S3
+        KBC --> S4
+
+        subgraph KBC[Kafka Broker Cluster]
+            Broker1
+            Broker2
+        end
+    end
+
+```
+The below diagram shows how the kafka broker maintains partition that contains the messages. You can think of each partition as just a file. All new messages are appended to the end of the file. The broker maintains an index of the messages in the file. The index is used to find the messages quickly.
+
+The messages are written to the disk in the order they are received. The messages are read from the disk in the order they are written. This is called the order guarantee.
+
+A message is identified by the topic, partition and offset. The offset is the index of the message in the partition.
+
+A message can only be written to one partition. The partition is decided by the key of the message. If the key is not specified, the partition is decided by the round robin algorithm.
+
+```mermaid
+
+flowchart
+    subgraph "Kafka Broker"        
+        subgraph "Topic A"
+            subgraph "Partition "
+                direction LR
+                M1[Message 1] 
+                M2[Message 4]
+                M3[Message 5]
+            end
+            subgraph "Partition "
+                M21[Message 2]
+                M22[Message 3]
+            end
+        end        
+    end
+
+```
+
+### 15. Containerization
+
+```mermaid
+
+flowchart
+    subgraph "Docker "
+
+        Jar
+        JDK
+    end
+```
+
+```
 > [Home](HOME.md)
