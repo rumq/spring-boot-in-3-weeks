@@ -1,2 +1,2 @@
-# [Home](pages/Home.md)
+# [Home](pages/README.md)
 
