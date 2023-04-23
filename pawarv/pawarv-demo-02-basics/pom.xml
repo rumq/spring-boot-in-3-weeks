@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>net.rumq.sb</groupId>
-	<artifactId>demo-02-basics</artifactId>
+	<artifactId>pawarv-demo-02-basics</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo-02-basics</name>
-	<description>Demo project for Spring Boot</description>
+	<name>pawarv-demo-02-basics</name>
+	<description>Spring Boot Basics</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

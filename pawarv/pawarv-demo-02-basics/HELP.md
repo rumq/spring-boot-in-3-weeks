@@ -1,9 +1,9 @@
-# Demostd - Second Demo Application
+# pawarv-demo-02-basics - Spring Boot Basics
 
 Look at this after you've been through
 
-- First Demo Application `pawarv/demo`
-- Slides up to [04_04_Beans_DependencyInjection](../../slides/pdfs/04_Beans_DependencyInjection.pptx.pdf).
+- The application `pawarv-demo-01-start`
+- The slides up to [04_04_Beans_DependencyInjection](../../slides/pdfs/04_Beans_DependencyInjection.pptx.pdf).
 
 
 This application makes use of the following dependencies.
@@ -164,3 +164,21 @@ The qualifier is required as there are three beans of type `Shape`         and w
 The `shapes` variable is injected with a `Collection` of all the beans of type `Shape`.
 
 The `shapesMap` variable is injected with a `Map` of all the beans of type `Shape`. The key is the name of the bean.
+
+See the following output in the console.
+
+```
+08: Result of Dependency Injection 
+  Autowired shape1:  Hello from Square 
+   Type of shape1 : class net.rumq.sb.demo02basics.Square
+  Autowired shape2: Hello from Triangle 
+   Type of shape2 : class net.rumq.sb.demo02basics.Triangle 
+ Autowired Collection<Shape> shapes     : [Hello from Square, Hello from Square1, Hello from Triangle] 
+ Autowired Map<String, Shape> shapesMap : {square=Hello from Square, square1=Hello from Square1, triangle=Hello from Triangle}
+08A : Hello from Square
+08B : Hello from Triangle
+08C : Hello from Square1
+
+
+```
+
