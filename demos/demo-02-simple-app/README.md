@@ -1,6 +1,6 @@
 >[Home](../../README.md)
  
-# Demo02SimpleApp
+# Demo02 SimpleApp
  
 ## Status : DONE 
  

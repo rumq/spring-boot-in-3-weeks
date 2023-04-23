@@ -1,19 +1,18 @@
->[Home](../../README.md)
+> [Home](../../README.md)
 
- 
-# Demo03WebApp
- 
+# Demo 03 WebApp
+
 ## Status : DONE
- 
-## Classes
- 
-* [Demo03WebAppApplication.java](../demos/demo-03-web-app/src/main/java/com/example/demo03webapp/Demo03WebAppApplication.java)    
- 
-## Observations on  Demo03WebAppApplication class
 
-* The class is annotated with `@SpringBootApplication`
-* The class has a `main` method that starts the Spring application
-  * By executing the `run` method of the `SpringApplication` class by giving it the class of the application as an argument.
+## Classes
+
+- [Demo03WebAppApplication.java](../demo-03-web-app/src/main/java/com/example/demo03webapp/Demo03WebAppApplication.java)
+
+## Observations on Demo03WebAppApplication class
+
+- The class is annotated with `@SpringBootApplication`
+- The class has a `main` method that starts the Spring application
+  - By executing the `run` method of the `SpringApplication` class by giving it the class of the application as an argument.
 
 ## Observations on the pom.xml file
 
@@ -27,11 +26,11 @@ It has a dependency on the `spring-boot-maven-plugin` plugin, which is used to b
 The only difference between the `pom.xml` file for this web application and the `pom.xml` file for the previous regular application is the addition of the `spring-boot-starter-web` dependency with the `web` ending.
 
 ## Observations on executing the application
- 
-Successful run shows which application is running on what Java version, and how long it took to start. 
- 
+
+Successful run shows which application is running on what Java version, and how long it took to start.
+
 It shows that Tomcat was initialized on port `8111` adn that WebAplicationContext was initialized.
- 
+
 ```
 Starting Demo03WebAppApplication using Java 11.0.17 on barcelona with PID 12184 (C:\home\git\spring-boot-in-3-weeks\demos\demo-03-web-app\target\classes started by vikram in C:\home\git\spring-boot-in-3-weeks)
 
@@ -63,8 +62,6 @@ curl http://localhost:8111
 
 This should result in the following output, which is the HTML content of the `index.html` file in the `static` folder from the `resources` folder, which is [this file](../demos/demo-03-web-app/src/main/resources/static/index.html).
 
-
-
 ```bash
 <!DOCTYPE html>
 <html lang="en">
@@ -77,4 +74,5 @@ This should result in the following output, which is the HTML content of the `in
 </body>
 </html>
 ```
->[Home](../../README.md)
+
+> [Home](../../README.md)
