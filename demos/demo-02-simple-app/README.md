@@ -1,4 +1,4 @@
->[Common Home](../README.md)
+>[Home](../../README.md)
  
 # Demo02SimpleApp
  
@@ -6,7 +6,7 @@
  
 ## Classes
 
-* [Demo02SimpleAppApplication.java](../demos/demo-02-simple-app/src/main/java/com/example/demo02simpleapp/Demo02SimpleAppApplication.java)  
+* [Demo02SimpleAppApplication.java](../demo-02-simple-app/src/main/java/com/example/demo02simpleapp/Demo02SimpleAppApplication.java)  
 
 ## Observations on  Demo02SimpleAppApplication class
 * The class is annotated with `@SpringBootApplication`
@@ -33,4 +33,4 @@ It has dependencies on the following Spring Boot modules:
 It has a dependency on the `spring-boot-maven-plugin` plugin, which is used to build the application.
   
  
->[Common Home](../README.md)
+>[Home](../../README.md)
