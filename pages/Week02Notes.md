@@ -1,4 +1,4 @@
-> [Home](Home.md)
+> [Home](../README.md)
 
 # Week Two Notes
 
@@ -413,5 +413,5 @@ flowchart
     end
 ```
 
-```
-> [Home](HOME.md)
+
+> [Home](../README.md)

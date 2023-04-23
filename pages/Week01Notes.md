@@ -1,4 +1,4 @@
-> [Home](Home.md)
+> [Home](../README.md)
 
 - [1 Introduction](#1-introduction)
   - [Start](#start)
@@ -561,7 +561,5 @@ public class MyConfig {
         - Can change the properties in `application.properties` or YAML.
             - For example `server.port=8111`
             - The full list of application properties is here [https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)
-    - Configuring Component
-        - Try
 
-
+> [Home](../README.md)
