@@ -60,17 +60,20 @@ public class DemostdApplication {
 		System.out.println("05C : (prototypeScopeComponent == prototypeScopeComponent2)=" + (prototypeScopeComponent == prototypeScopeComponent2));
 		
 
-		// Show that the bean is autowired
+		// 06 Show that the bean is autowired
 		var fieldAutowiredDI = ctx.getBean("fieldAutowiredDI", FieldAutowiredDI.class);
-		System.out.println(fieldAutowiredDI);
+		System.out.println("06 : " + fieldAutowiredDI);
 
-		// Constructor injection
+		// 07 Constructor injection
 		var constructorAutowiredDI = ctx.getBean("constructorAutowiredDI", ConstructorAutowiredDI.class);
-		System.out.println(constructorAutowiredDI);
+		System.out.println("07 : " + constructorAutowiredDI);
 
-		// Qualifier, Collection, Map injection
+		// 08 Qualifier, Collection, Map injection
 		var qualifierAutowiredDI = ctx.getBean("qualifierAutowiredDI", QualifierAutowiredDI.class);
-		System.out.println(qualifierAutowiredDI);
+		System.out.println("08: " + qualifierAutowiredDI);
+		System.out.println("08A : " + ctx.getBean("square", Square.class));
+		System.out.println("08B : " + ctx.getBean("triangle", Triangle.class));
+		System.out.println("08C : " + ctx.getBean("square1", Square1.class));
 
 		// Injecting a value from application.properties
 		var injectingValues = ctx.getBean("injectingValues", InjectingValues.class);

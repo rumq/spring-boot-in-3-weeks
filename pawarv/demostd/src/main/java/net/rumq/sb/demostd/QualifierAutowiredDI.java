@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 /*
  * Qualifier is used to inject a specific bean when there are multiple beans of the same type.
  * Triangle and Square are beans of the same type.
+ * 
  * The bean is injected by qualifier.
  * 
  * Also demonstrates the use of Collection to inject all beans of the same type.
@@ -31,6 +32,11 @@ public class QualifierAutowiredDI {
     private Shape shape2;
 
     @Autowired
+    @Qualifier("square1") 
+    private Shape shape3;
+    
+
+    @Autowired
     private Collection<Shape> shapes;
 
     @Autowired
@@ -43,12 +49,13 @@ public class QualifierAutowiredDI {
     @Override
     public String toString() {
 
-        return "Result of DI qualified as shape1 & shape2 - " + shape1.toString() + " - " + shape2.toString() +
-                " \n Collection shapes autowired - " + shapes.toString() +
-                " \n   Classes : shape1 :" + shape1.getClass() + " shape2 : " + shape2.getClass() +
-                " \n Map shapes autowired - " + shapesMap.toString() +
-                " \n   Classes : shape1 :" + shapesMap.get("square").getClass() + " shape2 : "
-                + shapesMap.get("triangle").getClass() +
+        return "Result of Dependency Injection " + 
+                "\n  Autowired shape1:  " + shape1.toString() + 
+                " \n   Type of shape1 : " + shape1.getClass()  +
+                "\n  Autowired shape2: " + shape2.toString() +
+                " \n   Type of shape2 : " + shape2.getClass() +
+                " \n Autowired Collection<Shape> shapes     : " + shapes.toString() +
+                " \n Autowired Map<String, Shape> shapesMap : " + shapesMap.toString() +                
                 "";
     }
 
@@ -98,6 +105,27 @@ class Square implements Shape {
     public String getShape() {
 
         return "Square";
+    }
+
+}
+
+@Component
+class Square1 implements Shape {
+
+    public Square1() {
+        System.out.println("Square1 created");
+    }
+
+    @Override
+    public String toString() {
+
+        return "Hello from Square1";
+    }
+
+    @Override
+    public String getShape() {
+
+        return "Square1";
     }
 
 }

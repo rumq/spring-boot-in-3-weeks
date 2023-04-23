@@ -30,7 +30,7 @@ public class ConstructorAutowiredDI {
     @Override
     public String toString() {
 
-        return "ConstructorAutowireDI [singletonScopeComponent=" + singletonScopeComponent
+        return "ConstructorAutowiredDI [singletonScopeComponent=" + singletonScopeComponent
                 + ", prototypeScopeComponent=" + prototypeScopeComponent + ", lazyComponent="
                 + lazyComponent + ", namedComponent=" + namedComponent + "]";
     }
