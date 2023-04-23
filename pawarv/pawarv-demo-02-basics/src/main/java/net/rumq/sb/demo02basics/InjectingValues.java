@@ -1,4 +1,4 @@
-package net.rumq.sb.demostd;
+package net.rumq.sb.demo02basics;
 
 import java.util.List;
 import java.util.Map;

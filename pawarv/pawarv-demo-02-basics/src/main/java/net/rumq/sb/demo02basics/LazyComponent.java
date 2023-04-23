@@ -1,4 +1,4 @@
-package net.rumq.sb.demostd;
+package net.rumq.sb.demo02basics;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
