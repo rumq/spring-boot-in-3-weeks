@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 public class PrototypeScopeComponent {
     
         public PrototypeScopeComponent() {
-            System.out.println("PrototypeScopeComponent created");
+            System.out.println("PrototypeScopeComponent created " + this.hashCode());
         }
     
         @Override
         public String toString() {
             
-            return "Hello from PrototypeScopeComponent";
+            return "Hello from PrototypeScopeComponent " + this.hashCode() ;
         }
 }

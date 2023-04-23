@@ -4,11 +4,11 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
-@Lazy
+@Lazy(false)
 public class LazyComponent {
 
     public LazyComponent() {
-        System.out.println("LazyComponent created");
+        System.out.println("04 LazyComponent Creation: LazyComponent created");
     }
 
     @Override

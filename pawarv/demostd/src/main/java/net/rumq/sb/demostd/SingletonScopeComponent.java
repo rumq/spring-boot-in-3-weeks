@@ -14,12 +14,12 @@ import org.springframework.stereotype.Component;
 public class SingletonScopeComponent {
     
         public SingletonScopeComponent() {
-            System.out.println("SingletonScopeComponent created");
+            System.out.println("SingletonScopeComponent created " + this.hashCode());
         }
     
         @Override
         public String toString() {
             
-            return "Hello from SingletonScopeComponent";
+            return "Hello from SingletonScopeComponent " + this.hashCode();
         }
 }

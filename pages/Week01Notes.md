@@ -1,10 +1,8 @@
 > [Home](Home.md)
 
 - [1 Introduction](#1-introduction)
-  - [Note On 06/11/222](#note-on-0611222)
   - [Start](#start)
 - [2 Creating a simple Spring Boot App](#2-creating-a-simple-spring-boot-app)
-  - [Aside](#aside)
 - [3 Creating Web App](#3-creating-web-app)
 - [4 Beans Dependency injection](#4-beans-dependency-injection)
   - [4.1 Components and Beans](#41-components-and-beans)
@@ -28,64 +26,35 @@
 
 ## 1 Introduction
 
-### Note On 06/11/222
-
-These are notes I made when I attend it in the past.
-I'll be reviewing these again and update it as we go through the course again now.
-If you are reading this
-
 ### Start
 
-RabbitMQ is being replaced by Kafka.
+Spring Boot application can run as a standalone application.
 
-Olsen would start off with Kafka rather than RabbitMQ.
+Project page for [Spring Boot](https://spring.io/projects/spring-boot).
 
-Spring allows running as a standalone applications.
+Spring Boot documentation : [Spring Boot Reference documentation](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
 
-Get from here [https://spring.io/projects/spring-boot](https://spring.io/projects/spring-boot)
-
-Spring Boot documenation : [https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
-
-Spring Boot App has a REST interface that clients can call. The app in turn can communicate with MQ and DB.
+Spring Boot App can have a REST interface that clients can call. 
+The app in turn can communicate with MQ and DB.
 
 Spring Boot Cloud - Allows calling of one app in cloud to another app.
 
-Web Sockets → Continuous stream of data.
-
-Client could be Web UI or other clients calling a Spring Boot App.
+Client could be Web UI or a mobile app.
 
 ## 2 Creating a simple Spring Boot App
 
+See 
+- the slide [02_Creating_Simple_App](../slides/pdfs/02_Creating_Simple_App.pptx.pdf).
+- the code [demo-02-simple-app](../demos/demo-02-simple-app/)
+
 Spring Boot is a layer on top of Spring framework using auto configuration.
-
-IntelliJ is more widely used than Eclipse.
-
-Don’t use SNAPSHOT versions of SB.
 
 SB has few pom dependencies.
 
-Search for spring-boot-starter on  [https://mvnrepository.com/](https://mvnrepository.com/) [here](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter)
+[MVN Repository](https://mvnrepository.com/) is the place to search for dependencies. You can find `sping-boot-starter` here.
 
-### Aside
+We need this one [spring-boot-starter](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter).
 
-Create a simple Spring App in Groovy
-
-```groovy
-@RestController
-class ThisWillActuallyRun {
-
-    @RequestMapping("/")
-    String home() {
-        "Hello World!"
-    }
-
-}
-```
-
-```bash
-# run a groovy test app after installing spring boot CLI
-spring run app.groovy
-```
 
 To create a simple app in Java, use the below pom.xml file.
 
@@ -156,22 +125,36 @@ mvn spring-boot:run
 
 ## 3 Creating Web App
 
-SB apps run as web apps. Tomcat apps run on `8080` port by default. In the past you’d create a .war file and deploy it to a central web server.
-You no longer do it this way now. Now each jar contains the tomcat jars and is standalone and is run as a standalone java application. Each jar could be in it’s own docker container. 
-These can be controlled by Kubernetes.
+See 
+- The slide [03_Creating_Web_App](../slides/pdfs/03_Creating_Web_App.pptx.pdf).
+- The code [demo-03-web-app](../demos/demo-03-web-app/).
+-  
+
+SB apps run as web apps. 
+Tomcat apps run on `8080` port by default. 
+In the past you’d create a .war file and deploy it to a central web server.
+You no longer do it this way now. 
+Now each jar contains the tomcat jars and runs as a standalone java application. 
+Each jar could be in its own docker container. 
+These can be orchestrated by Kubernetes.
 Choose Spring Web dependency (most widely used 90%)
 
 The application would not use dynamically generated html (using templates thymeleaf) instead it would generate JSON response.
 
-`[application.properties](http://application.properties)` file contains properties files. Most components have default properties for example `server.port=8080`.
+`[application.properties](http://application.properties)` file contains properties files. 
+Most components have default properties for example `server.port=8080`.
 
 ## 4 Beans Dependency injection
+
+See 
+- The slide [04_Beans_Dependency_Injection](../slides/pdfs/04_Beans_DependencyInjection.pptx.pdf).
+- The code [demo-04-beans-dependency-injection](../demos/demo-04-beans-dependencyinjection/).
 
 ### 4.1 Components and Beans
 
 **Overview of Components**
 
-A **component** is a class that Spring automatically instantiates when it is annotated witth `@Controller or @RestController`: UI  
+A **component** is a class that Spring automatically instantiates when it is annotated with `@Controller or @RestController`: UI  
 `@Service` : Middle layer
 `@Repository`: Database 
 `@Component:` General purpose
@@ -191,7 +174,8 @@ public class MyComponent {
 
 **Component Scanning**
 
-By default application class package and sub packages scanned. Specify more as below
+By default application class package and sub packages scanned. 
+You can give other package names if required.
 
 ```java
 @SpringBootApplication( scanBasePackages={"mypackage1", "mypackage2"})
@@ -202,13 +186,13 @@ public class Application {
 **Access a bean as below**
 
 During startup all the beans are created and put in the context object.
-They can be retrieved using the getBean method. 
+They can be retrieved using the `getBean` method. 
 
 ```java
 // Get the application context object 
 ApplicationContext ctx = SpringApplication.run(MyApplication.class, args);
 // call the getBean method on it, give it the class of the component
-MyComponent bean = ctx.**getBean**(MyComponent.class);
+MyComponent bean = ctx.getBean(MyComponent.class);
 
 ```
 ### 4.2 A closer look at Components and Beans
