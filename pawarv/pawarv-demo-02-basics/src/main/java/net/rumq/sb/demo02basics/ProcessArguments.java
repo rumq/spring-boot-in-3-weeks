@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  *  You can see the options and non-option arguments in the console output.
  * 
  *  Run it with the following command:
- *  mvn spring-boot:run -Dspring-boot.run.arguments="--target=foo --target=bar baz"
+ *  mvn spring-boot:run -Dspring-boot.run.arguments="--target=first --target=second third"
  * 
  */
 @Component

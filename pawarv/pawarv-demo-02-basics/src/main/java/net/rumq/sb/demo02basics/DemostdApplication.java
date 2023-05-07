@@ -37,7 +37,7 @@ public class DemostdApplication {
 
 		// 02B Get the bean by name and type
 		var fancyNameComponent2 = ctx.getBean("FancyNameComponent", NamedComponent.class);
-		System.out.println("02B : Getting bean By Name and Type getBean(FancyNameComponent.class, NamedComponent.class) : "
+		System.out.println("02B : PawarV Getting bean By Name and Type getBean(FancyNameComponent.class, NamedComponent.class) : "
 				+ fancyNameComponent2);
 
 		// 03 Show that the bean is a singleton
@@ -75,15 +75,18 @@ public class DemostdApplication {
 		System.out.println("08B : " + ctx.getBean("triangle", Triangle.class));
 		System.out.println("08C : " + ctx.getBean("square1", Square1.class));
 
-		// Injecting a value from application.properties
+		// 09 Injecting a value from application.properties
 		var injectingValues = ctx.getBean("injectingValues", InjectingValues.class);
+		System.out.println("09 injectingValues : " + injectingValues);
 		System.out.println(injectingValues);
 
-		// Process arguments
+		// 10 Process arguments
+		System.out.println("**********************\n10 Arguments : ");
 		var processArguments = ctx.getBean("processArguments", ProcessArguments.class);
-		System.out.println(processArguments);
+		System.out.println("processArguments : " + processArguments);
 
-		// Beans created in Configuration class
+		// 11 Beans created in Configuration class
+		System.out.println("**********************\n11 Beans created in Configuration class : ");
 		MyBean bean2 = ctx.getBean("myBean", MyBean.class);
 		System.out.println(bean2);
 

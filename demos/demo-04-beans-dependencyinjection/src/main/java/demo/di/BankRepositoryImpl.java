@@ -1,12 +1,12 @@
-package demo.di;
+// package demo.di;
 
-import org.springframework.stereotype.Repository;
+// import org.springframework.stereotype.Repository;
 
-@Repository
-public class BankRepositoryImpl implements BankRepository {
+// @Repository
+// public class BankRepositoryImpl implements BankRepository {
 
-	@Override
-	public void update(int accountId, double amount) {
-		System.out.printf("\tIn RepositoryImpl.update(%d, %.2f)\n", accountId, amount);
-	}
-}
+// 	@Override
+// 	public void update(int accountId, double amount) {
+// 		System.out.printf("\tIn RepositoryImpl.update(%d, %.2f)\n", accountId, amount);
+// 	}
+// }
